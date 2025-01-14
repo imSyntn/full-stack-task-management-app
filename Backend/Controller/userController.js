@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ msg: 'Wrong username or password.' })
         }
 
-        const token = genToken(username)
+        const token = genToken({username, id: isAvailable.id})
 
         return res.status(200).cookie('deliveryAppToken', token, {
             httpOnly: false,
