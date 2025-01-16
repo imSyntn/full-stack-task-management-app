@@ -13,6 +13,10 @@ const menuSchame = new mongoose.Schema({
     availability: {
         type: Boolean,
         default: true
+    },
+    image: {
+        type: String,
+        default: 'https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg'
     }
 })
 

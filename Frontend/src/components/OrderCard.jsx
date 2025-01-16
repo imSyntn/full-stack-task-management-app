@@ -1,12 +1,12 @@
 import React from 'react'
 
-const OrderCard = () => {
+const OrderCard = ({item}) => {
   return (
     <div className='bg-gray-400 w-full flex justify-between items-center my-2 px-5'>
-        <img src="https://images.pexels.com/photos/1435907/pexels-photo-1435907.jpeg" alt="" className='w-20 h-20' />
-        <h2>Kebab</h2>
-        <h2>Price: 5252</h2>
-        <h2>5 pieces</h2>
+        <img src={item.image} alt="" className='w-20 h-20' />
+        <h2>{item.name}</h2>
+        <h2>{item.quantity} {(item.quantity >1) ? 'pieces' : 'piece'}.</h2>
+        <h2>Price: {(item.price * item.quantity).toFixed(2)}</h2>
     </div>
   )
 }

@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const dotENV = require('dotenv').config()
+const cors = require('cors')
 
 const { auth } = require('./Routes/Auth')
 const { menuRoute } = require('./Routes/MenuRoutes')
@@ -12,6 +13,11 @@ const { restrictToUser } = require('./Middleware/cookieVarify')
 const app = express()
 
 mongoose.connect(process.env.MONGODB_URI).then(() => console.log('Database connected.')).catch(e => console.log(e))
+
+app.use(cors({
+    origin: true,
+    credentials: true
+}))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
