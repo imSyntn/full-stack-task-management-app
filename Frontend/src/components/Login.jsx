@@ -71,7 +71,7 @@ const Login = () => {
                 </div>
                 <div className="inp">
                     <label htmlFor="password">Password</label>
-                    <input type="text" name="password" className='border border-gray-300' value={formData.password} onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))} />
+                    <input type="password" name="password" className='border border-gray-300' value={formData.password} onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))} />
                     <p className='text-red-500'>{formError.password}</p>
                 </div>
                 <button className='border border-gray-300 px-3 w-full'>

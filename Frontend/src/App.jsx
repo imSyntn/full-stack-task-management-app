@@ -11,7 +11,6 @@ const MenuEdit = lazy(() => import('./components/MenuEdit'))
 const Order = lazy(() => import('./components/Order'))
 
 function App() {
-  const [count, setCount] = useState(0)
   const [cartOpen, setCartOpen] = useState(false)
 
   return (
