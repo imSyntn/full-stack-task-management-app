@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { login } from '../store/slice/userSlice'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const Login = () => {
 
@@ -38,12 +39,20 @@ const Login = () => {
 
         axios.post(url, formData, { withCredentials: true }).then(e => {
             console.log(e.data)
-            //alert
-            if (e.data.loggedIn) {
-                dispatch(login(formData))
-                navigate('/menu')
+            if (e.status >= 200 && e.status <= 299) {
+                if (e.data.loggedIn) {
+                    dispatch(login(formData))
+                    toast('Successful.')
+                    navigate('/menu')
+                }
+            } else {
+                console.log(e.response.data.msg)
+                toast(e.response.data.msg)
             }
-        }).catch(e => console.log(e))
+        }).catch(e => {
+            console.log(e.response.data.msg)
+            toast('Error occoured.')
+        })
 
     }
 
