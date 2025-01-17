@@ -29,7 +29,7 @@ const Cart = ({ cartOpen, setCartOpen }) => {
 
     const createOrder = () => {
         if (cartItems.length > 0 && isLoggedIn) {
-            axios.post('http://localhost:5000/order', { reqItems: [...cartItems] }, { withCredentials: true }).then(e => {
+            axios.post(`${import.meta.env.VITE_BACKEND_URI}/order`, { reqItems: [...cartItems] }, { withCredentials: true }).then(e => {
                 if(e.status >= 200 && e.status <= 299) {
                     console.log(e)
                     toast("Order Successful.")

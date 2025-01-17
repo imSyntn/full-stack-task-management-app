@@ -21,7 +21,7 @@ const MenuEdit = () => {
     const postMenuItem = (e) => {
         e.preventDefault();
         setLoading(true)
-        axios.post(`http://localhost:5000/menu`, { ...formData }, { withCredentials: true }).then(e => {
+        axios.post(`${import.meta.env.VITE_BACKEND_URI}/menu`, { ...formData }, { withCredentials: true }).then(e => {
             if (e.status == 200) {
                 console.log(e.data)
                 toast("Menu post Successful.")
@@ -40,7 +40,7 @@ const MenuEdit = () => {
     const updateMenuItem = (e) => {
         e.preventDefault();
         setLoading(true)
-        axios.put(`http://localhost:5000/menu/${id}`, { ...formData }, { withCredentials: true }).then(e => {
+        axios.put(`${import.meta.env.VITE_BACKEND_URI}/menu/${id}`, { ...formData }, { withCredentials: true }).then(e => {
             if (e.status == 200) {
                 console.log(e.data)
                 toast("Update Successful.")
@@ -60,7 +60,7 @@ const MenuEdit = () => {
     const deleteMenuItem = (e) => {
         e.preventDefault();
         setLoading(true)
-        axios.delete(`http://localhost:5000/menu/${id}`, { ...formData }, { withCredentials: true }).then(e => {
+        axios.delete(`${import.meta.env.VITE_BACKEND_URI}/menu/${id}`, { ...formData }, { withCredentials: true }).then(e => {
             if (e.status == 200) {
                 console.log(e.data)
                 toast('Delete Successful.')
@@ -79,7 +79,7 @@ const MenuEdit = () => {
     useEffect(() => {
         if (id) {
             setLoading(true)
-            axios.get(`http://localhost:5000/menu/${id}`).then(e => {
+            axios.get(`${import.meta.env.VITE_BACKEND_URI}/menu/${id}`).then(e => {
                 if (e.status == 200) {
                     console.log(e.data)
                     setFormData({

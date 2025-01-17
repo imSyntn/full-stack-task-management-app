@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 import OrderCard from './OrderCard'
 import axios from 'axios'
 
@@ -14,7 +15,7 @@ const Order = () => {
         if (user) {
             setLoading(true)
             axios
-                .get('http://localhost:5000/orders', { withCredentials: true }).then(e => {
+                .get(`${import.meta.env.VITE_BACKEND_URI}/orders`, { withCredentials: true }).then(e => {
                     if (e.status >= 200 && e.status <= 299) {
                         console.log(e.data)
                         setOrders(e.data)
@@ -26,6 +27,7 @@ const Order = () => {
                 .finally(() => setLoading(false))
         } else {
             setOrders([])
+            toast('Login is required.')
         }
     }, [user])
 

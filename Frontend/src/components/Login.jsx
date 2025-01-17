@@ -7,6 +7,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const Login = () => {
+    console.log(import.meta.env.VITE_BACKEND_URI)
 
     const [wantLogin, setWantLogin] = useState(true)
     const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const Login = () => {
         if (formData.password == '') {
             return setFormError(prev => ({ ...prev, password: 'Password is required.' }))
         }
-        const url = wantLogin ? 'http://localhost:5000/login' : 'http://localhost:5000/register'
+        const url = wantLogin ? `${import.meta.env.VITE_BACKEND_URI}/login` : `${import.meta.env.VITE_BACKEND_URI}/register`
 
         axios.post(url, formData, { withCredentials: true }).then(e => {
             console.log(e.data)

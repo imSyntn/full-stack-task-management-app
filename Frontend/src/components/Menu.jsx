@@ -18,7 +18,7 @@ const Menu = () => {
     useEffect(() => {
         setLoading(true)
         axios
-            .get('http://localhost:5000/menu').then(e => {
+            .get(`${import.meta.env.VITE_BACKEND_URI}/menu`).then(e => {
                 if (e.status >= 200 && e.status <= 299) {
                     // console.log(e)
                     setAllItems(e.data.data)
